@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>極ゾディアーク討滅戦</title>
+    <link rel="stylesheet" href="//unpkg.com/element-plus/dist/index.css" />
+    <script src="//unpkg.com/vue@next"></script>
+    <script src="//unpkg.com/element-plus"></script>
+    <style>
+        html{
+            margin:0 auto;
+            min-width: 1200px;
+            max-width: 1200px;
+        }
+        h1{
+            text-align: center;
+        }
+        img{
+            width: 650px;
+            height: 650px;
+            padding-left: 100px;
+        }
+        .checkboxtop{
+            width: 1000px;
+            left:8%
+        }
+        .checkboxbottom{
+            width: 1000px;
+            left:8%;
+            top:-50px;
+        }
+        .el-checkbox.is-bordered{
+            padding: 0 40px 0 40px;
+        }
+        .checkboxleft .el-checkbox.is-bordered{
+            margin-bottom: 120px;
+        }
+        .checkboxleft .el-checkbox.is-bordered:nth-child(1){
+            margin-top: 60px;
+        }
+        .checkboxright .el-checkbox.is-bordered{
+            margin-bottom: 120px;
+        }
+        .checkboxright .el-checkbox.is-bordered:nth-child(1){
+            margin-top: 60px;
+        }
+        .el-row {
+            margin-bottom: 20px;
+        }
+        .r{
+            position: relative;
+            margin-top: -660px;
+            width: 650px;
+            height: 650px;
+            top: -120px;
+            left: 248px;
+        }
+        .effectr1{
+            position: absolute;
+            width: 162.5px;
+            height: 650px;
+            background-color:rgba(255, 0, 0, 0.5);
+        }
+        .effectr2{
+            position: absolute;
+            left: 162.5px;
+            width: 162.5px;
+            height: 650px;
+            background-color:rgba(255, 0, 0, 0.5);
+        }
+        .effectr3{
+            position: absolute;
+            left: 325px;
+            width: 162.5px;
+            height: 650px;
+            background-color:rgba(255, 0, 0, 0.5);
+        }
+        .effectr4{
+            position: absolute;
+            left: 487.5px;
+            width: 162.5px;
+            height: 650px;
+            background-color:rgba(255, 0, 0, 0.5);
+        }
+        .effectl1{
+            position: absolute;
+            width: 650px;
+            height: 162.5px;
+            background-color:rgba(255, 0, 0, 0.5);
+        }
+        .effectl2{
+            position: absolute;
+            top: 162.5px;
+            width: 650px;
+            height: 162.5px;
+            background-color:rgba(255, 0, 0, 0.5);
+        }
+        .effectl3{
+            position: absolute;
+            top: 325px;
+            width: 650px;
+            height: 162.5px;
+            background-color:rgba(255, 0, 0, 0.5);
+        }
+        .effectl4{
+            position: absolute;
+            top: 487.5px;
+            width: 650px;
+            height: 162.5px;
+            background-color:rgba(255, 0, 0, 0.5);
+        }
+        .trl{
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 325px 325px 0 325px;
+            border-color: rgba(255, 0, 0, 0.5) transparent transparent transparent;
+        }
+        .trr{
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 325px 0 325px 325px;
+            border-color: transparent transparent transparent rgba(255, 0, 0, 0.5);
+        }
+        .trtl{
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 325px;
+            border-style: solid;
+            border-width: 0 325px 325px 325px;
+            border-color: transparent transparent rgba(255, 0, 0, 0.5) transparent;
+        }
+        .trtr{
+            position: absolute;
+            left: 325px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 325px 325px 325px 0;
+            border-color: transparent rgba(255, 0, 0, 0.5) transparent transparent;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <el-row>
+            <el-col>
+                <h1>極ゾディアーク討滅戦</h1>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="6"></el-col>
+            <el-col :span="6"><el-button type="primary" round @click="turn1">顺时针转蛇</el-button></el-col>
+            <el-col :span="3"></el-col>
+            <el-col :span="6"><el-button type="success" round @click="turn2">逆时针转蛇</el-button></el-col>
+        </el-row>
+        <el-row :offset="50" class="checkboxtop">
+            <el-col :span="4"><el-checkbox v-model="trl" label="Line" border></el-checkbox></el-col>
+            <el-col :span="4"><el-checkbox v-model="effectr1" label="🐍" border></el-checkbox></el-col>
+            <el-col :span="4"><el-checkbox v-model="effectr2" label="🐍" border></el-checkbox></el-col>
+            <el-col :span="4"><el-checkbox v-model="effectr3" label="🐍" border></el-checkbox></el-col>
+            <el-col :span="4"><el-checkbox v-model="effectr4" label="🐍" border></el-checkbox></el-col>
+            <el-col :span="4"><el-checkbox v-model="trr" label="Line" border></el-checkbox></el-col>
+        </el-row>
+        <el-row :offset="50">
+            <el-col :span="3" class="checkboxleft"> 
+                    <el-checkbox label="🐍" border v-model="effectl1"></el-checkbox><br>
+                    <el-checkbox label="🐍" border v-model="effectl2"></el-checkbox><br>
+                    <el-checkbox label="🐍" border v-model="effectl3"></el-checkbox><br>
+                    <el-checkbox label="🐍" border v-model="effectl4"></el-checkbox><br>
+            </el-col>
+            <el-col :span="18"><img src="./bg.png" style="text-align: center;"></el-col>
+            <el-col :span="3" class="checkboxright">
+                    <el-checkbox label="🐍" border v-model="effectl1"></el-checkbox><br>
+                    <el-checkbox label="🐍" border v-model="effectl2"></el-checkbox><br>
+                    <el-checkbox label="🐍" border v-model="effectl3"></el-checkbox><br>
+                    <el-checkbox label="🐍" border v-model="effectl4"></el-checkbox><br>
+            </el-col>
+        </el-row>
+        <el-row :offset="50" class="checkboxbottom">
+            <el-col :span="4"><el-checkbox v-model="trtl" label="Line" border></el-checkbox></el-col>
+            <el-col :span="4"><el-checkbox v-model="effectr1" label="🐍" border></el-checkbox></el-col>
+            <el-col :span="4"><el-checkbox v-model="effectr2" label="🐍" border></el-checkbox></el-col>
+            <el-col :span="4"><el-checkbox v-model="effectr3" label="🐍" border></el-checkbox></el-col>
+            <el-col :span="4"><el-checkbox v-model="effectr4" label="🐍" border></el-checkbox></el-col>
+            <el-col :span="4"><el-checkbox v-model="trtr" label="Line" border></el-checkbox></el-col>
+        </el-row>
+        <div class="r">
+            <div class="effectr1" v-show="effectr1"></div>
+            <div class="effectr2" v-show="effectr2"></div>
+            <div class="effectr3" v-show="effectr3"></div>
+            <div class="effectr4" v-show="effectr4"></div>
+            <div class="effectl1" v-show="effectl1"></div>
+            <div class="effectl2" v-show="effectl2"></div>
+            <div class="effectl3" v-show="effectl3"></div>
+            <div class="effectl4" v-show="effectl4"></div>
+            <div class="trl" v-show="trl"></div>
+            <div class="trr" v-show="trr"></div>
+            <div class="trtl" v-show="trtl"></div>
+            <div class="trtr" v-show="trtr"></div>
+        </div>
+    </div>
+    <script>
+        const App = {
+            data(){
+                return{
+                    effectr1:false,
+                    effectr2:false,
+                    effectr3:false,
+                    effectr4:false,
+                    effectl1:false,
+                    effectl2:false,
+                    effectl3:false,
+                    effectl4:false,
+                    trl:false,
+                    trr:false,
+                    trtl:false,
+                    trtr:false
+                }
+            },
+            methods:{
+                //顺时针
+                turn1(){
+                    if(this.effectr1&&this.effectr3){
+                        this.effectr1=false
+                        this.effectr3=false
+                        this.effectl1=true
+                        this.effectl3=true
+                    }
+                    else if(this.effectr2&&this.effectr4){
+                        this.effectr2=false
+                        this.effectr4=false
+                        this.effectl2=true
+                        this.effectl4=true
+                    }
+                    else if(this.effectl1&&this.effectl3){
+                        this.effectl1=false
+                        this.effectl3=false
+                        this.effectr2=true
+                        this.effectr4=true
+                    }
+                    else if(this.effectl2&&this.effectl4){
+                        this.effectl2=false
+                        this.effectl4=false
+                        this.effectr1=true
+                        this.effectr3=true
+                    }
+                },
+                //逆时针
+                turn2(){
+                    if(this.effectr1&&this.effectr3){
+                        this.effectr1=false
+                        this.effectr3=false
+                        this.effectl2=true
+                        this.effectl4=true
+                    }
+                    else if(this.effectr2&&this.effectr4){
+                        this.effectr2=false
+                        this.effectr4=false
+                        this.effectl1=true
+                        this.effectl3=true
+                    }
+                    else if(this.effectl1&&this.effectl3){
+                        this.effectl1=false
+                        this.effectl3=false
+                        this.effectr1=true
+                        this.effectr3=true
+                    }
+                    else if(this.effectl2&&this.effectl4){
+                        this.effectl2=false
+                        this.effectl4=false
+                        this.effectr2=true
+                        this.effectr4=true
+                    }
+                }
+            }
+        }
+        Vue.createApp(App).use(ElementPlus).mount('#app')
+    </script>
+</body>
+</html>
